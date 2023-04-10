@@ -10,7 +10,7 @@ const OnBoard2 = ({navigation}) => {
     }, [])
 
     return (
-        <SafeAreaView>
+        <SafeAreaView style={{backgroundColor: '#FDF7FD', height: '100%', width: '100%'}}>
             <Onboard 
                 id={2} 
                 count={3} 
