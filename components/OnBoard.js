@@ -2,6 +2,7 @@ import { View, Text, Image, TouchableOpacity } from 'react-native'
 import { AntDesign } from '@expo/vector-icons';
 import { Octicons } from '@expo/vector-icons'; 
 import React from 'react'
+import LottieView from 'lottie-react-native'
 
 const OnBoard = (props) => {
     const boardPage = [...Array(props.count).keys()]
@@ -9,9 +10,11 @@ const OnBoard = (props) => {
     return (
         <View style={{paddingTop: '20%', paddingBottom: '20%', backgroundColor: '#FDF7FD', justifyContent: 'space-between', width: '100%', height: '100%'}}>
             <View style={{width: '100%', height: '50%', alignItems: 'center'}}>
-                <Image 
-                    source={props.id == 0?require('../assets/image/onBoard0.png'):props.id == 1?require('../assets/image/onBoard1.png'):require('../assets/image/onBoard2.png')}
-                    style={{width: '90%', height: '100%', resizeMode: 'contain', marginBottom: '3%'}}
+                <LottieView
+                    style={{ width: '100%' }}
+                    autoPlay
+                    loop
+                    source = {props.id == 0?require('../assets/48646-girl-running.json'):props.id == 1?require('../assets/75531-friends.json'):require('../assets/104389-back-excercise.json')}
                 />
             </View>
             <View style={{paddingLeft: '10%', width: '70%', height: '20%', justifyContent: 'center'}}>
