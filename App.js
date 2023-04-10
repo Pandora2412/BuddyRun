@@ -4,6 +4,7 @@ import OnBoard0 from './screens/OnBoard0';
 import OnBoard1 from './screens/OnBoard1';
 import OnBoard2 from './screens/OnBoard2'; 
 import Home from './screens/Home';
+import Login from './screens/Login';
 
 const Stack = createNativeStackNavigator();
 
@@ -14,6 +15,7 @@ export default function App() {
         <Stack.Screen name="OnBoard0" component={OnBoard0} />
         <Stack.Screen name="OnBoard1" component={OnBoard1} />
         <Stack.Screen name="OnBoard2" component={OnBoard2} />
+        <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Home" component={Home} />
       </Stack.Navigator>
     </NavigationContainer>

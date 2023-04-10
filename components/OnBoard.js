@@ -29,7 +29,7 @@ const OnBoard = (props) => {
                     )}
                 </View>
                 <View style={{flexDirection: 'row', justifyContent: `${props.id!=props.count-1?"space-between":"flex-end"}`}}>
-                    <TouchableOpacity onPress={() => props.navigation.navigate('Home')}>
+                    <TouchableOpacity onPress={() => props.navigation.navigate('Login')}>
                         <Text style={{color: '#4B164C', fontSize: 20}}>{props.id!=props.count-1?"Skip":"Let's get started!"}</Text>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => props.navigation.navigate(props.id<props.count-1?'OnBoard'+(props.id+1):'Home')}>
