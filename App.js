@@ -24,7 +24,7 @@ export default function App() {
   useEffect(() => {
     const getData = async () => {
       try {
-        const firstLaunch = await AsyncStorage.getItem('a')
+        const firstLaunch = await AsyncStorage.getItem('firstTime')
         if (firstLaunch == null) {
           const storeData = async () => {
             try {

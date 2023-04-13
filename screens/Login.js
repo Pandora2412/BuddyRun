@@ -1,6 +1,7 @@
 import { SafeAreaView } from 'react-native-safe-area-context';
 import React, { useLayoutEffect, useState } from 'react';
 import { Octicons } from '@expo/vector-icons'; 
+import { AntDesign } from '@expo/vector-icons';
 import { View, Text, Image, TouchableOpacity, TextInput, ScrollView } from 'react-native';
 
 const Login = ({navigation}) => {
@@ -53,7 +54,7 @@ const Login = ({navigation}) => {
                         />
                         <Text style={{color: 'rgb(153, 153, 153)', fontSize: 13, fontFamily: 'PoppinsLight', textAlign: 'right'}}>Forgot Password?</Text>
                     </View>
-                    <View>
+                    <View style={{marginBottom: 40}}>
                         <TouchableOpacity 
                             style={{alignItems: 'center', borderRadius: 10, backgroundColor: '#4B164C', height: 50, justifyContent: 'center', marginBottom: 20}}
                             onPress={() => {
@@ -61,6 +62,16 @@ const Login = ({navigation}) => {
                             }}
                         >
                             <Text style={{color: 'white', fontSize: 19, fontFamily: 'PoppinsBold', textAlign: 'center'}}>Login</Text>
+                        </TouchableOpacity>
+                        <View style={{width: '100%', height: 30, alignItems: 'center'}}>
+                            <Image 
+                                source={require('../assets/image/OtherLogin.png')}
+                                style={{width: '100%', resizeMode: 'contain', marginBottom: '3%'}}
+                            />
+                        </View>
+                        <TouchableOpacity style={{flexDirection: 'row', alignItems: 'center', alignSelf: 'center'}}>
+                            <AntDesign name="google" size={24} color="#4B164C" />
+                            <Text style={{color: '#4B164C', fontSize: 16, fontFamily: 'PoppinsMedium'}}> Google</Text>
                         </TouchableOpacity>
                     </View>
                     <View style={{marginBottom: 20, flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center'}}>
