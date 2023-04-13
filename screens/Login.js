@@ -2,7 +2,6 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import React, { useLayoutEffect, useState } from 'react';
 import { Octicons } from '@expo/vector-icons'; 
 import { View, Text, Image, TouchableOpacity, TextInput, ScrollView } from 'react-native';
-import { storeData } from '../localstoreConfig/LocalStorageConfig';
 
 const Login = ({navigation}) => {
     useLayoutEffect(() => {
@@ -20,11 +19,11 @@ const Login = ({navigation}) => {
                 <View style={{paddingLeft: '6%', paddingRight: '6%', paddingTop: '3%', width: '100%'}}>
                     <View>
                         <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                            <Text style={{color: '#4B164C', fontSize: 20, fontWeight: 'bold'}}>Login </Text>
+                            <Text style={{color: '#4B164C', fontSize: 20, fontFamily: 'PoppinsBold'}}>Login </Text>
                             <Octicons name="person" size={24} color="#4B164C" />
                         </View>
                         <View style={{justifyContent: 'center'}}>
-                            <Text style={{color: '#5B5B5B', fontSize: 17, fontWeight: 'medium'}}>Welcome back!!!</Text>
+                            <Text style={{color: '#5B5B5B', fontSize: 17,  fontFamily: 'PoppinsMedium'}}>Welcome back!!!</Text>
                         </View>
                     </View>
                     <View style={{width: '100%', height: 300, alignItems: 'center'}}>
@@ -34,8 +33,8 @@ const Login = ({navigation}) => {
                         />
                     </View>
                     <View style={{width: '90%', alignItems: 'center', alignSelf: 'center', marginBottom: 25}}>
-                        <Text style={{fontSize: 19, fontWeight: 'medium', textAlign: 'center'}}>
-                            Let <Text style={{color: '#4B164C', fontWeight: 'bold'}}>BuddyRun </Text>help you enjoy your moment
+                        <Text style={{fontSize: 18, fontFamily: 'PoppinsMedium', textAlign: 'center'}}>
+                            Let <Text style={{color: '#4B164C', fontFamily: 'PoppinsBold'}}>BuddyRun </Text>help you enjoy your moment
                         </Text>
                     </View>
                     <View style={{width: '100%', marginBottom: 25}}>
@@ -43,39 +42,36 @@ const Login = ({navigation}) => {
                             onChangeText={(val) => setName(val)}
                             value={name}
                             placeholder="Enter Email"
-                            style={{padding: 10, fontSize: 20, fontWeight: 'medium', backgroundColor: 'white', height: 60, borderRadius: 10, marginBottom: 10}}
+                            style={{padding: 10, fontSize: 16, fontFamily: 'PoppinsLight', backgroundColor: 'white', height: 55, borderRadius: 10, marginBottom: 10}}
                         />
                         <TextInput 
                             onChangeText={(val) => setPwd(val)}
                             value={pwd}
                             placeholder="Enter Password"
                             secureTextEntry
-                            style={{padding: 10, fontSize: 20, fontWeight: 'medium', backgroundColor: 'white', height: 60, borderRadius: 10, marginBottom: 5}}
+                            style={{padding: 10, fontSize: 16, fontFamily: 'PoppinsLight', backgroundColor: 'white', height: 55, borderRadius: 10, marginBottom: 5}}
                         />
-                        <Text style={{color: '#5B5B5B', fontSize: 15, fontWeight: 'light', textAlign: 'right'}}>Forgot Password?</Text>
+                        <Text style={{color: 'rgb(153, 153, 153)', fontSize: 13, fontFamily: 'PoppinsLight', textAlign: 'right'}}>Forgot Password?</Text>
                     </View>
                     <View>
                         <TouchableOpacity 
                             style={{alignItems: 'center', borderRadius: 10, backgroundColor: '#4B164C', height: 50, justifyContent: 'center', marginBottom: 20}}
                             onPress={() => {
-                                storeData('username', name);
-                                storeData('password', pwd);
-                                storeData('notFirstTime', 'true')
                                 navigation.navigate('Home');
                             }}
                         >
-                            <Text style={{color: 'white', fontSize: 19, fontWeight: 'bold', textAlign: 'center'}}>Login</Text>
+                            <Text style={{color: 'white', fontSize: 19, fontFamily: 'PoppinsBold', textAlign: 'center'}}>Login</Text>
                         </TouchableOpacity>
                     </View>
                     <View style={{marginBottom: 20, flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center'}}>
-                        <Text style={{fontSize: 14, fontWeight: 'light', textAlign: 'center'}}>Don't have any account yet? </Text>
+                        <Text style={{fontSize: 14, fontFamily: 'PoppinsLight', textAlign: 'center', color: 'rgb(153, 153, 153)'}}>Don't have any account yet? </Text>
                         <TouchableOpacity 
                                 style={{alignItems: 'center'}}
                                 onPress={() => {
-                                   
+                                    
                                 }}
                             >
-                                <Text style={{fontSize: 14, fontWeight: 'bold', textAlign: 'center'}}>Sign up</Text>
+                                <Text style={{fontSize: 14,  fontFamily: 'PoppinsBold', textAlign: 'center', color: '#4B164C'}}>Sign up</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
