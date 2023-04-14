@@ -3,6 +3,7 @@ import React, { useLayoutEffect, useState } from 'react';
 import { Octicons } from '@expo/vector-icons'; 
 import { AntDesign } from '@expo/vector-icons';
 import { View, Text, Image, TouchableOpacity, TextInput, ScrollView } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Login = ({navigation}) => {
     useLayoutEffect(() => {
@@ -58,12 +59,21 @@ const Login = ({navigation}) => {
                         <TouchableOpacity 
                             style={{alignItems: 'center', borderRadius: 10, backgroundColor: '#4B164C', height: 50, justifyContent: 'center', marginBottom: 20}}
                             onPress={() => {
+                                const storeData = async () => {
+                                    try {
+                                        await AsyncStorage.setItem('user', name)
+                                        await AsyncStorage.setItem('password', pwd)
+                                    } catch (e) {
+                                        console.log(e);
+                                    }
+                                }
+                                storeData();
                                 navigation.navigate('Home');
                             }}
                         >
                             <Text style={{color: 'white', fontSize: 19, fontFamily: 'PoppinsBold', textAlign: 'center'}}>Login</Text>
                         </TouchableOpacity>
-                        <View style={{width: '100%', height: 30, alignItems: 'center'}}>
+                        <View style={{width: '100%', height: 50, alignItems: 'center'}}>
                             <Image 
                                 source={require('../assets/image/OtherLogin.png')}
                                 style={{width: '100%', resizeMode: 'contain', marginBottom: '3%'}}

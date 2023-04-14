@@ -19,7 +19,7 @@ const OnBoard = (props) => {
                             source = {props.id == 0?require('../assets/48646-girl-running.json'):props.id == 1?require('../assets/75531-friends.json'):require('../assets/104389-back-excercise.json')}
                         />
                     </View>
-                    <View style={{paddingLeft: '10%', width: '80%', justifyContent: 'center'}}>
+                    <View style={{paddingLeft: '10%', width: '80%', justifyContent: 'center', height: 100}}>
                         <Text style={{color: '#4B164C', fontSize: 27, fontFamily: 'PoppinsMedium'}}>{props.title}</Text>
                     </View>
                     <View style={{paddingLeft: '10%', width: '80%'}}>
