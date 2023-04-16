@@ -4,6 +4,7 @@ import { useState, useEffect, useLayoutEffect } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Entypo } from '@expo/vector-icons';
+import { Pedometer } from 'expo-sensors';
 import Jogging from '../components/Jogging';
 import TaskBar from '../components/TaskBar';
 
@@ -26,8 +27,28 @@ const Home = ({navigation, route}) => {
     getData();
   }, [])
 
+  const [pastStepCount, setPastStepCount] = useState(0);
   const [name, setName] = useState(null);
   const [jog, setJog] = useState(true);
+
+  const subscribe = async () => {
+    const isAvailable = await Pedometer.isAvailableAsync();
+    if (isAvailable) {
+      const end = new Date();
+      const start = new Date();
+      start.setDate(end.getDate() - 1);
+
+      const pastStepCountResult = await Pedometer.getStepCountAsync(start, end);
+      if (pastStepCountResult) {
+        setPastStepCount(pastStepCountResult.steps);
+      }
+    }
+  };
+
+  useEffect(() => {
+    const subscription = subscribe();
+    return () => subscription && subscription.remove();
+  }, []);
 
   return (
     <SafeAreaView style={{backgroundColor: '#FDF7FD', height: '100%', width: '100%'}}>
@@ -53,6 +74,11 @@ const Home = ({navigation, route}) => {
                 Week goal: <Text style={{color: '#4B164C'}}> 50 km</Text>
               </Text>
               <Entypo name="chevron-thin-right" size={24} color="#333333" />
+            </View>
+            <View style={{flexDirection: 'row', width: '100%', justifyContent: 'space-between', alignItems: 'center'}}>
+              <Text style={{fontSize: 16,  fontFamily: 'PoppinsMedium', color: '#333333'}}>
+                Steps taken in last 24 hours: <Text style={{color: '#4B164C'}}>{pastStepCount}</Text>
+              </Text>
             </View>
             <View style={{width: '100%', height: 50, justifyContent: 'space-between'}}>
               <View style={{flexDirection: 'row', width: '100%', justifyContent: 'space-between'}}>
