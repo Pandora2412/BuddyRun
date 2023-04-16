@@ -1,6 +1,6 @@
 import { View, Text, ImageBackground, TouchableOpacity } from 'react-native';
 import React from 'react';
-import { useState, useCallback, useRef } from 'react';
+import { useState, useCallback, useEffect, useRef } from 'react';
 import { Foundation } from '@expo/vector-icons';
 import { Accelerometer } from 'expo-sensors';
 
@@ -9,6 +9,8 @@ const Jogging = () => {
   const [{x,y,z}, setData] = useState({x: 0, y: 0, z: 0});
   const [play, setPlay] = useState(false);
   const [time, setTime] = useState(0)
+  const [prevMagnitude, setPrevMagnitude] = useState(0)
+  const [stepCount, setStepCount] = useState(0)
 
   const timeid = useRef(null);
 
@@ -47,7 +49,19 @@ const Jogging = () => {
     clearInterval(timeid.current);
     _unsubscribe();
     setData({x: 0, y: 0, z: 0});
+    setStepCount(0)
+    setPrevMagnitude(0)
   }, [play, time])
+
+  useEffect(() => {
+    const magnitude = Math.sqrt(x * x + y * y + z * z);
+    const deltaMagnitude = magnitude - prevMagnitude;
+    setPrevMagnitude(magnitude);
+    if (deltaMagnitude > 0.05) {
+      const steps = stepCount + 1;
+      setStepCount(steps);
+    }
+  }, [x, y, z]);
 
   return (
     <View style={{width: '100%', height: 450, borderRadius: 20, marginBottom: 15}}>
@@ -73,6 +87,9 @@ const Jogging = () => {
                 <Foundation name="stop" size={30} color="white" />
               </TouchableOpacity>
             </View>
+          </View>
+          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <Text>Step count: {stepCount}</Text>
           </View>
           <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <Text>x: {Math.round(x*100)/100}</Text>
