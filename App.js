@@ -6,6 +6,7 @@ import OnBoard1 from './screens/OnBoard1';
 import OnBoard2 from './screens/OnBoard2'; 
 import Home from './screens/Home';
 import Login from './screens/Login';
+import GPS from './screens/GPS';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useFonts } from 'expo-font';
 
@@ -57,6 +58,7 @@ export default function App() {
           {firstTime && <Stack.Screen name="OnBoard2" component={OnBoard2} />}
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="GPS" component={GPS} />
         </Stack.Navigator>
       </NavigationContainer>
     )
